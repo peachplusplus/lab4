@@ -9,6 +9,7 @@ var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
+var project = require('./routes/project');
 // Example route
 // var user = require('./routes/user');
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
+  app.get('/project/:name', project.viewProject);
 }
 
 // Add routes here
